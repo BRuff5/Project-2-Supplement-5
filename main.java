@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * This class contains three functionalities:
  * 1. A static method determining if a 2D matrix is a magic square.
@@ -60,4 +63,31 @@
         }
         return diagonal2Sum == magicSum;
     }
+
+    /**
+     * Counts the number of subarrays  
+     *
+     * @param nums   the input integer array
+     * @param target the target sum
+     * @return the number of subarray
+     */
+    public static int countUniqueSubarrays(int[] nums, int target) {
+        Set<String> uniqueSubarrays = new HashSet<>();
+        // Starting points
+        for (int start = 0; start < nums.length; start++) {
+            int sum = 0;
+            StringBuilder subarray = new StringBuilder();
+            // ending points
+            for (int end = start; end < nums.length; end++) {
+                sum += nums[end];
+                subarray.append(nums[end]).append(",");
+                // Seeif sum equals
+                if (sum == target) {
+                    uniqueSubarrays.add(subarray.toString());
+                }
+            }
+        }
+        return uniqueSubarrays.size(); // Return the count 
+    }
+    
  }

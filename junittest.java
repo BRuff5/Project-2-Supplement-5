@@ -16,6 +16,7 @@ class junittest {
             }
         
             
+
     void testIsMagicSquareInvalidRow() {
         int[][] matrix = {
             {8, 1, 6},
@@ -26,6 +27,7 @@ class junittest {
             }
         
         
+            
             private void assertFalse(boolean magicSquare, String string) {
                 // TODO Auto-generated method stub
                 throw new UnsupportedOperationException("Unimplemented method 'assertFalse'");
