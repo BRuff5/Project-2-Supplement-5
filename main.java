@@ -90,4 +90,54 @@ import java.util.Set;
         return uniqueSubarrays.size(); // Return the count 
     }
     
- }
+
+    /**
+     * Finds the longest palindromic substring in a given string.
+     *
+     * @param s the input string
+     * @return the longest palindromic substring
+     */
+    public static String longestPalindrome(String s) {
+        int n = s.length();
+        if (n == 0) return "";
+
+        boolean[][] dp = new boolean[n][n]; //Track palindromic substrings
+        String longest = "";
+
+        
+        for (int end = 0; end < n; end++) {
+            for (int start = 0; start <= end; start++) {
+                if (s.charAt(start) == s.charAt(end) && (end - start <= 2 || dp[start + 1][end - 1])) {
+                    dp[start][end] = true;
+
+                    // Update 
+                    if (end - start + 1 > longest.length()) {
+                        longest = s.substring(start, end + 1);
+                    }
+                }
+            }
+        }
+        return longest;
+    }
+
+    public static void main(String[] args) {
+        // Test for magic square
+        int[][] matrix = {
+            { 4, 9, 2 },
+            { 3, 5, 7 },
+            { 8, 1, 6 }
+        };
+        System.out.println("Is magic square: " + isMagicSquare(matrix));
+
+        // Subrays
+        int[] nums = {1, 2, 1, 2, 3};
+        int target = 3;
+        System.out.println("Number of unique subarrays with sum " + target + ": " + countUniqueSubarrays(nums, target));
+
+        //Longest palindromic substring
+        String str = "babad";
+        System.out.println("Longest palindromic substring: " + longestPalindrome(str));
+    }
+}
+
+ 
